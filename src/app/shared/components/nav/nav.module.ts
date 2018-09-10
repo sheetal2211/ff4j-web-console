@@ -1,11 +1,20 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import { NavComponent } from './nav.component';
+import {MatIconModule, MatToolbarModule} from '@angular/material';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    MatToolbarModule,
+    MatIconModule
   ],
-  declarations: []
+  declarations: [
+    NavComponent,
+  ],
+  exports: [
+    NavComponent
+  ]
 })
 export class NavModule {
 }
