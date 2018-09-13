@@ -1,11 +1,19 @@
 import {Routes} from '@angular/router';
-import {HomeComponent} from './home/home.component';
+import {FeaturesComponent} from './features/features.component';
+import {PropertiesComponent} from './properties/properties.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
 
 export const appRoutes: Routes = [
   {
-    path: '', component: HomeComponent,
+    path: 'features', component: FeaturesComponent
   },
   {
-    path: '**', component: HomeComponent
+    path: 'properties', component: PropertiesComponent
+  },
+  {
+    path: 'dashboard', component: DashboardComponent
+  },
+  {
+    path: '**', redirectTo: 'features'
   }
 ];

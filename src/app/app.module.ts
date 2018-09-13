@@ -3,8 +3,10 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {RoutesModule} from './routes/routes.module';
-import {HomeModule} from './routes/home/home.module';
 import {NavModule} from './shared/components/nav/nav.module';
+import {FeaturesModule} from './routes/features/features.module';
+import {PropertiesModule} from './routes/properties/properties.module';
+import {DashboardModule} from './routes/dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
@@ -12,9 +14,11 @@ import {NavModule} from './shared/components/nav/nav.module';
   ],
   imports: [
     BrowserModule,
-    HomeModule,
     RoutesModule,
-    NavModule
+    NavModule,
+    FeaturesModule,
+    PropertiesModule,
+    DashboardModule
   ],
   providers: [
     // add your providers

@@ -1,7 +1,11 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { NavComponent } from './nav.component';
+import {NavComponent} from './nav.component';
 import {MatIconModule, MatToolbarModule} from '@angular/material';
+import {RoutesModule} from '../../../routes/routes.module';
+import {APP_BASE_HREF} from '@angular/common';
+import {NO_ERRORS_SCHEMA} from '@angular/core';
+
 
 describe('NavComponent', () => {
   let component: NavComponent;
@@ -9,13 +13,22 @@ describe('NavComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports : [
+      imports: [
         MatToolbarModule,
-        MatIconModule
+        MatIconModule,
+        RoutesModule
       ],
-      declarations: [ NavComponent ]
+      declarations: [
+        NavComponent
+      ],
+      providers: [
+        { provide: APP_BASE_HREF, useValue: '/' }
+      ],
+      schemas: [
+        NO_ERRORS_SCHEMA
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
