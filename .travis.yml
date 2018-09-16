@@ -18,6 +18,7 @@ cache:
   - node_modules
 
 script:
+- npm run lint
 - ng test --watch=false
 - ng build --prod
 
