@@ -2,7 +2,6 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {NavComponent} from './nav.component';
 import {MatIconModule, MatToolbarModule} from '@angular/material';
-import {RoutesModule} from '../../../routes/routes.module';
 import {APP_BASE_HREF} from '@angular/common';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 
@@ -16,7 +15,6 @@ describe('NavComponent', () => {
       imports: [
         MatToolbarModule,
         MatIconModule,
-        RoutesModule
       ],
       declarations: [
         NavComponent
