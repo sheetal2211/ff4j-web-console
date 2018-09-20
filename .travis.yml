@@ -20,7 +20,7 @@ cache:
 script:
 - npm run lint
 - ng test --watch=false
-- ng build --prod ng build --env=prod --base-href “https://paul58914080.github.io/ff4j-web-console/”
+- ng build --prod --base-href “https://paul58914080.github.io/ff4j-web-console/”
 
 
 deploy:
