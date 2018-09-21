@@ -1,11 +1,10 @@
 import {Injectable} from '@angular/core';
-import {FeaturesModule} from '../../routes/features/features.module';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Feature} from '../models/Feature';
 
 @Injectable({
-  providedIn: FeaturesModule
+  providedIn: 'root'
 })
 export class FeatureService {
 
