@@ -7,6 +7,7 @@ import {NavModule} from './shared/components/nav/nav.module';
 import {FeaturesModule} from './routes/features/features.module';
 import {PropertiesModule} from './routes/properties/properties.module';
 import {DashboardModule} from './routes/dashboard/dashboard.module';
+import {LoggerModule, NgxLoggerLevel} from 'ngx-logger';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import {DashboardModule} from './routes/dashboard/dashboard.module';
   imports: [
     BrowserModule,
     RoutesModule,
+    LoggerModule.forRoot({ level: NgxLoggerLevel.DEBUG }),
     NavModule,
     FeaturesModule,
     PropertiesModule,
