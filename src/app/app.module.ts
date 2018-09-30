@@ -16,7 +16,7 @@ import {LoggerModule, NgxLoggerLevel} from 'ngx-logger';
   imports: [
     BrowserModule,
     RoutesModule,
-    LoggerModule.forRoot({ level: NgxLoggerLevel.DEBUG }),
+    LoggerModule.forRoot({ level: NgxLoggerLevel.INFO }),
     NavModule,
     FeaturesModule,
     PropertiesModule,
