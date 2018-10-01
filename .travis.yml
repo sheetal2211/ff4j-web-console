@@ -22,6 +22,8 @@ script:
 - ng test --watch=false
 - ng build --prod --base-href https://paul58914080.github.io/ff4j-web-console/
 
+after_success:
+- cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 
 deploy:
   provider: pages
