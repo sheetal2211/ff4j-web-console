@@ -22,6 +22,7 @@ module.exports = function (config) {
             thresholds: {
                 statements: 80,
                 lines: 80,
+                branches: 80,
                 functions: 80
             }
         },
@@ -41,7 +42,7 @@ module.exports = function (config) {
                     '--headless',
                     '--disable-gpu',
                     // Without a remote debugging port, Google Chrome exits immediately.
-                    ' --remote-debugging-port=9222',
+                    ' --remote-debugging-port=9222'
                 ]
             }
         }
