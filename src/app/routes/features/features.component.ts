@@ -6,7 +6,7 @@ import {NGXLogger} from 'ngx-logger';
 @Component({
   selector: 'ff4j-features',
   templateUrl: './features.component.html',
-  styleUrls: ['./features.component.scss']
+  styleUrls: [ './features.component.scss' ]
 })
 export class FeaturesComponent implements OnInit {
 

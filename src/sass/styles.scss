@@ -5,6 +5,8 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import "mixins";
 @import "variables";
+@import '~ag-grid-community/dist/styles/ag-grid';
+@import '~ag-grid-community/dist/styles/ag-theme-material';
 
 html, body {
   width: 100%;
