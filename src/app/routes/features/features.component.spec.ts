@@ -6,6 +6,7 @@ import {of, throwError} from 'rxjs';
 import {HttpClientModule} from '@angular/common/http';
 import {LoggerTestingModule, NGXLogger, NGXLoggerMock} from 'ngx-logger';
 import {AgGridModule} from 'ag-grid-angular';
+import {FeatureCardModule} from '../../shared/components/feature-card/feature-card.module';
 
 describe('FeaturesComponent', () => {
   let component: FeaturesComponent;
@@ -15,7 +16,7 @@ describe('FeaturesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule, LoggerTestingModule, AgGridModule.withComponents([])],
+      imports: [HttpClientModule, FeatureCardModule, LoggerTestingModule, AgGridModule.withComponents([])],
       declarations: [FeaturesComponent],
       providers: [FeatureService]
     })
