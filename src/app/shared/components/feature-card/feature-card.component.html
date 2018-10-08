@@ -19,13 +19,31 @@
     </div>
     <div class='row d-none d-md-block' style='padding-top: 15px'>
       <div class='col-md-12'>
-        <label class='label'>
+        <label class='label ellipsis'>
           {{feature.description}}
         </label>
       </div>
     </div>
-    <div class='row'>
-      <!-- TODO -->
+    <div class='row d-flex' style='padding-top: 15px'>
+      <div class="col-md-12 col-lg-4 d-flex align-items-center">
+        <mat-icon color="primary">person_add</mat-icon>
+        <div>
+          <span *ngIf="!showAll">
+            <span class="badge badge-pill badge-secondary label m-1" *ngFor="let permission of feature.permissions | slice:0:2">{{permission}}</span>
+            <span *ngIf="feature.permissions ? feature.permissions.length > 2 : false">..<a href="javascript:void(0)" (click)="showAll = true">more</a></span>
+          </span>
+          <span *ngIf="showAll">
+            <span class="badge badge-pill badge-secondary label m-1" *ngFor="let permission of feature.permissions">{{permission}}</span>
+            <span >..<a href="javascript:void(0)" (click)="showAll = false">less</a></span>
+          </span>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-4 d-flex align-items-center">
+        <mat-icon color="primary">assignment</mat-icon>
+      </div>
+      <div class="col-md-12 col-lg-4 d-flex align-items-center">
+        <mat-icon color="primary" matBadge='15' matBadgeColor='warn'>device_hub</mat-icon>
+      </div>
     </div>
   </div>
 </mat-card>

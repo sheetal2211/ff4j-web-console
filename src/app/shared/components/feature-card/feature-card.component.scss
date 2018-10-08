@@ -9,4 +9,16 @@ mat-card {
     font-size: .8rem;
     font-weight: 400;
   }
+
+  .ellipsis {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  a {
+    font-size: .8rem;
+    font-weight: 400;
+  }
 }

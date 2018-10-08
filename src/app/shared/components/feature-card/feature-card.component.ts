@@ -21,7 +21,8 @@ export class FeatureCardComponent implements OnInit {
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
           est laborum.`,
       group: 'Group Name',
-      enable: false
+      enable: false,
+      permissions: ['ROLE_ADMIN', 'ROLE_USER', 'ROLE_ADMIN', 'ROLE_USER']
     };
   }
 }
