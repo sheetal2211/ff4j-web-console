@@ -2,6 +2,7 @@ import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FeatureCardComponent} from './feature-card.component';
 import {MatBadgeModule, MatButtonModule, MatCardModule, MatIconModule, MatSlideToggleModule} from '@angular/material';
+import {BadgesModule} from '../badges/badges.module';
 
 @NgModule({
   imports: [
@@ -10,7 +11,8 @@ import {MatBadgeModule, MatButtonModule, MatCardModule, MatIconModule, MatSlideT
     MatSlideToggleModule,
     MatButtonModule,
     MatIconModule,
-    MatBadgeModule
+    MatBadgeModule,
+    BadgesModule
   ],
   declarations: [
     FeatureCardComponent

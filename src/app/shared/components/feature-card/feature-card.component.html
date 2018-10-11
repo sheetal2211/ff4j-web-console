@@ -2,7 +2,7 @@
   <div class='container-fluid'>
     <div class='row d-flex'>
       <div class='col-sm-6 col-md-4 text-left d-flex align-items-center'>
-        <mat-slide-toggle><span class='label'>{{feature.uid}}</span></mat-slide-toggle>
+        <mat-slide-toggle><span class='title-label'>{{feature.uid}}</span></mat-slide-toggle>
       </div>
       <div class='col-sm-6 col-md-3 d-flex align-items-center justify-content-center' *ngIf='feature.group'>
         <label class='label' style='padding-top: 7px'>Group &nbsp;</label><span class="badge badge-pill badge-secondary label">Secondary</span>
@@ -25,24 +25,17 @@
       </div>
     </div>
     <div class='row d-flex' style='padding-top: 15px'>
-      <div class="col-md-12 col-lg-4 d-flex align-items-center">
-        <mat-icon color="primary">person_add</mat-icon>
-        <div>
-          <span *ngIf="!showAll">
-            <span class="badge badge-pill badge-secondary label m-1" *ngFor="let permission of feature.permissions | slice:0:2">{{permission}}</span>
-            <span *ngIf="feature.permissions ? feature.permissions.length > 2 : false">..<a href="javascript:void(0)" (click)="showAll = true">more</a></span>
-          </span>
-          <span *ngIf="showAll">
-            <span class="badge badge-pill badge-secondary label m-1" *ngFor="let permission of feature.permissions">{{permission}}</span>
-            <span >..<a href="javascript:void(0)" (click)="showAll = false">less</a></span>
-          </span>
-        </div>
+      <div class="col-md-12 col-lg-4 d-flex align-items-center" *ngIf='feature.permissions && feature.permissions.length > 0'>
+        <mat-icon color="primary" [matBadge]='feature.permissions?.length' matBadgeColor='warn'>person_add</mat-icon>
+        <ff4j-badges [values]='feature.permissions'></ff4j-badges>
       </div>
       <div class="col-md-12 col-lg-4 d-flex align-items-center">
-        <mat-icon color="primary">assignment</mat-icon>
+        <mat-icon color="primary" [matBadge]='feature.permissions?.length' matBadgeColor='warn'>assignment</mat-icon>
+        <ff4j-badges [values]='feature.permissions'></ff4j-badges>
       </div>
       <div class="col-md-12 col-lg-4 d-flex align-items-center">
-        <mat-icon color="primary" matBadge='15' matBadgeColor='warn'>device_hub</mat-icon>
+        <mat-icon color="primary" [matBadge]='feature.permissions?.length' matBadgeColor='warn'>device_hub</mat-icon>
+        <ff4j-badges [values]='feature.permissions'></ff4j-badges>
       </div>
     </div>
   </div>
