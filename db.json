@@ -1,11 +1,54 @@
 {
-  "posts": [
+  "features": [
     {
-      "id": 1,
-      "title": "hello"
+      "uid": "admin",
+      "enable": false,
+      "description": "the admin page",
+      "group": "admin",
+      "permissions": [
+        "ROLE_ADMIN"
+      ],
+      "flippingStrategy": null,
+      "customProperties": {}
+    },
+    {
+      "uid": "login",
+      "enable": true,
+      "description": "the login page",
+      "group": "user",
+      "permissions": [
+        "ROLE_USER",
+        "ROLE_ADMIN"
+      ],
+      "flippingStrategy": null,
+      "customProperties": {}
+    },
+    {
+      "uid": "Feature_UID",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "group": "Group Name",
+      "enable": false,
+      "permissions": [
+        "ROLE_ADMIN",
+        "ROLE_USER",
+        "ROLE_ADMIN",
+        "ROLE_USER"
+      ],
+      "customProperties": {
+        "SampleProperty": {
+          "name": "SampleProperty",
+          "description": "",
+          "type": "org.ff4j.property.PropertyString",
+          "value": "go!",
+          "fixedValues": []
+        }
+      },
+      "flippingStrategy": {
+        "type": "org.ff4j.strategy.el.ExpressionFlipStrategy",
+        "initParams": {
+          "expression": "f1 & f2 | !f1 | f2"
+        }
+      }
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
