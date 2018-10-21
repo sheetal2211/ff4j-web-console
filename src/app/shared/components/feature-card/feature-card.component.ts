@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Feature} from '../../models/Feature';
+import {Property} from '../../models/Property';
 
 @Component({
   selector: 'ff4j-feature-card',
@@ -13,6 +14,18 @@ export class FeatureCardComponent implements OnInit {
   }
 
   ngOnInit() {
+    const properties = new Map<string, Property>();
+    properties.set('Sample Property', {
+      'name': 'SampleProperty',
+      'description': '',
+      'type': 'org.ff4j.property.PropertyString',
+      'value': 'go!',
+      'fixedValues': []
+    });
+
+    const initParams = new Map<string, string>();
+    initParams.set('expression', 'f1 & f2 | !f1 | f2');
+
     this.feature = {
       uid: 'Feature_UID',
       description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
@@ -22,7 +35,12 @@ export class FeatureCardComponent implements OnInit {
           est laborum.`,
       group: 'Group Name',
       enable: false,
-      permissions: ['ROLE_ADMIN', 'ROLE_USER', 'ROLE_ADMIN', 'ROLE_USER']
+      permissions: [ 'ROLE_ADMIN', 'ROLE_USER', 'ROLE_ADMIN', 'ROLE_USER' ],
+      customProperties: properties,
+      flippingStrategy: {
+        type: 'org.ff4j.strategy.el.ExpressionFlipStrategy',
+        initParams: initParams
+      }
     };
   }
 }
