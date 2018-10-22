@@ -7,6 +7,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {LoggerTestingModule, NGXLogger, NGXLoggerMock} from 'ngx-logger';
 import {AgGridModule} from 'ag-grid-angular';
 import {FeatureCardModule} from '../../shared/components/feature-card/feature-card.module';
+import {Property} from '../../shared/models/Property';
 
 describe('FeaturesComponent', () => {
   let component: FeaturesComponent;
@@ -35,7 +36,7 @@ describe('FeaturesComponent', () => {
   });
 
   it('should have had requested to get features', () => {
-    const expectedData = [
+    const serviceResponseData = [
       {
         uid: 'admin',
         enable: false,
@@ -51,22 +52,65 @@ describe('FeaturesComponent', () => {
           }
         },
         customProperties: {
-          'spring.log.level': {
-            'name': 'spring.log.level',
-            'description': 'spring log level',
-            'type': 'org.ff4j.property.PropertyLogLevel',
-            'value': 'DEBUG'
+          'SampleProperty': {
+            'name': 'SampleProperty',
+            'description': '',
+            'type': 'org.ff4j.property.PropertyString',
+            'value': 'go!',
+            'fixedValues': []
           }
         }
+      },
+      {
+        uid: 'test',
+        enable: false,
+        description: 'the test page'
       }
     ];
-    spyOn(featureService, 'getFeatures').and.returnValues(of(expectedData));
+    // The customProperties needs to be transformed to a Map
+    const properties = new Map<string, Property>();
+    properties.set('SampleProperty', {
+      'name': 'SampleProperty',
+      'description': '',
+      'type': 'org.ff4j.property.PropertyString',
+      'value': 'go!',
+      'fixedValues': []
+    });
+    const expectedData = [
+      {
+        uid: 'admin',
+        enable: false,
+        description: 'the admin page',
+        group: 'admin',
+        permissions: [
+          'ROLE_ADMIN'
+        ],
+        flippingStrategy: {
+          type: 'org.ff4j.strategy.PonderationStrategy',
+          initParams: {
+            weight: '0.0'
+          }
+        },
+        customProperties: properties
+      },
+      {
+        uid: 'test',
+        enable: false,
+        description: 'the test page'
+      }
+    ];
+    spyOn(featureService, 'getFeatures').and.returnValues(of(serviceResponseData));
     spyOn(logger, 'debug').and.callThrough();
     fixture.detectChanges();
     expect(featureService.getFeatures).toHaveBeenCalledTimes(1);
     expect(component.features).toBeDefined();
     expect(JSON.stringify(component.features)).toEqual(JSON.stringify(expectedData));
-    expect(logger.debug).toHaveBeenCalledWith('Features : ' + JSON.stringify(expectedData));
+    component.features.forEach((feature) => {
+      if (feature.customProperties) {
+        expect(feature.customProperties).toEqual(jasmine.any(Map));
+      }
+    });
+    expect(logger.debug).toHaveBeenCalledWith('Features : ' + JSON.stringify(serviceResponseData));
   });
   it('should log error when getFeatures fails', () => {
     const error = new Error('Unable to handle');
