@@ -7,9 +7,8 @@ export class TestContext<T, H> {
   fixture: ComponentFixture<H>;
   hostComponent: H;
   tested: DebugElement;
-  testedDirective: T;
+  testedComponent: T;
   testedElement: any;
-
   /*
    * Add any shortcuts you may need.
    * Here is an example of one, but you could for instance add shortcuts to:
@@ -47,7 +46,7 @@ export function initContext<T, H>(testedType: Type<T>, hostType: Type<H>, module
     const testedDebugElement = this.fixture.debugElement.query(By.directive(testedType));
     // On larger project, it would be recommended to throw an error here if the tested directive can't be found.
     this.tested = testedDebugElement;
-    this.testedDirective = testedDebugElement.injector.get(testedType);
+    this.testedComponent = testedDebugElement.injector.get(testedType);
     this.testedElement = testedDebugElement.nativeElement;
   });
 

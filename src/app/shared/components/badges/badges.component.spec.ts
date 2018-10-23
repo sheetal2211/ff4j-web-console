@@ -1,53 +1,35 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-
 import {BadgesComponent} from './badges.component';
 import {Component} from '@angular/core';
-import {By} from '@angular/platform-browser';
+import {initContext, TestContext} from '../../../../testing/test.context';
 
 @Component({
   template: `
     <ff4j-badges [values]='values' [maxToShow]='maxToShow'></ff4j-badges>`
 })
 class TesteeBadgeComponent {
-  values = ['1', '2', '3'];
+  values = [ '1', '2', '3' ];
   maxToShow = 1;
 }
 
 describe('BadgesComponent', () => {
-  let hostComponent: TesteeBadgeComponent;
-  let userComponent: BadgesComponent;
-  let fixture: ComponentFixture<TesteeBadgeComponent>;
+  type Context = TestContext<BadgesComponent, TesteeBadgeComponent>;
+  initContext(BadgesComponent, TesteeBadgeComponent);
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ BadgesComponent, TesteeBadgeComponent ]
-    })
-      .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(TesteeBadgeComponent);
-    hostComponent = fixture.componentInstance;
-    const userDebugElement = fixture.debugElement.query(By.directive(BadgesComponent));
-    userComponent = userDebugElement.componentInstance;
+  it('should create', function(this: Context) {
+    this.fixture.detectChanges();
+    expect(this.hostComponent).toBeTruthy();
+    expect(this.testedComponent).toBeTruthy();
   });
 
-  it('should create', () => {
-    fixture.detectChanges();
-    expect(hostComponent).toBeTruthy();
-    expect(userComponent).toBeTruthy();
-  });
-
-  it('should have propagate the input values for property values and maxToShow', () => {
-    // default
-    fixture.detectChanges();
-    expect(userComponent.values).toEqual(['1', '2', '3']);
-    expect(userComponent.maxToShow).toEqual(1);
+  it('should have propagate the input values for property values and maxToShow', function(this: Context) {
+    this.fixture.detectChanges();
+    expect(this.testedComponent.values).toEqual(['1', '2', '3']);
+    expect(this.testedComponent.maxToShow).toEqual(1);
     // on change should apply
-    hostComponent.values = ['4', '5'];
-    hostComponent.maxToShow = 2;
-    fixture.detectChanges();
-    expect(userComponent.values).toEqual(['4', '5']);
-    expect(userComponent.maxToShow).toEqual(2);
+    this.hostComponent.values = ['4', '5'];
+    this.hostComponent.maxToShow = 2;
+    this.detectChanges();
+    expect(this.testedComponent.values).toEqual(['4', '5']);
+    expect(this.testedComponent.maxToShow).toEqual(2);
   });
 });
