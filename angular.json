@@ -81,7 +81,7 @@
               "src/testing/**/*"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/sass/styles.scss"
             ],
             "scripts": [],
             "assets": [
