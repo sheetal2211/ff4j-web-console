@@ -1,38 +1,48 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-
 import {FeatureCardComponent} from './feature-card.component';
-import {CommonModule} from '@angular/common';
+import {Component} from '@angular/core';
+import {Feature} from '../../models/Feature';
+import {initContext, TestContext} from '../../../../testing/test.context';
 import {MatButtonModule, MatCardModule, MatIconModule, MatSlideToggleModule} from '@angular/material';
-import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+
+@Component({
+    template: `<ff4j-feature-card [feature]='feature'></ff4j-feature-card>`
+})
+class TesteeFeatureCardComponent {
+    feature: Feature = {
+        uid: 'Feature_UID',
+        description: `Feature Card Description`,
+        group: 'Group Name',
+        enable: false,
+        permissions: ['ROLE_ADMIN', 'ROLE_USER', 'ROLE_ADMIN', 'ROLE_USER']
+    };
+}
 
 describe('FeatureCardComponent', () => {
-  let component: FeatureCardComponent;
-  let fixture: ComponentFixture<FeatureCardComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        CommonModule,
+    type Context = TestContext<FeatureCardComponent, TesteeFeatureCardComponent>;
+    const moduleMetaData: any = {
         MatCardModule,
         MatSlideToggleModule,
         MatButtonModule,
         MatIconModule
-      ],
-      declarations: [FeatureCardComponent],
-      schemas: [
-        CUSTOM_ELEMENTS_SCHEMA
-      ]
-    })
-      .compileComponents();
-  }));
+    };
+    initContext(FeatureCardComponent, TesteeFeatureCardComponent, moduleMetaData);
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(FeatureCardComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    it('should create', function (this: Context) {
+        this.fixture.detectChanges();
+        expect(this.hostComponent).toBeTruthy();
+        expect(this.testedComponent).toBeTruthy();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should have got the input value for feature', function(this: Context) {
+        this.fixture.detectChanges();
+        expect(this.testedComponent.feature.uid).toBe('Feature_UID');
+        expect(this.testedComponent.feature.description).toBe(`Feature Card Description`);
+        expect(this.testedComponent.feature.group).toBe('Group Name');
+        expect(this.testedComponent.feature.enable).toBeFalsy();
+        expect(this.testedComponent.feature.permissions.length).toEqual(4);
+        // on change should apply
+        this.hostComponent.feature.enable = true;
+        this.detectChanges();
+        expect(this.testedComponent.feature.enable).toBeTruthy();
+    });
 });

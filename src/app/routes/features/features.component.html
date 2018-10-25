@@ -1,13 +1,15 @@
 <div class='ff4j-features'>
- <!-- TODO
-  <ag-grid-angular
-      class="h-100 w-100 ag-theme-material"
-      [rowData]="rowData"
-      [columnDefs]="columnDefs"
-      (gridReady)='onGridReady($event)'>
-  </ag-grid-angular>
-  -->
-  <div class='container-fluid'>
-    <ff4j-feature-card></ff4j-feature-card>
-  </div>
+    <!-- TODO
+     <ag-grid-angular
+         class="h-100 w-100 ag-theme-material"
+         [rowData]="rowData"
+         [columnDefs]="columnDefs"
+         (gridReady)='onGridReady($event)'>
+     </ag-grid-angular>
+     -->
+    <div class='container-fluid'>
+        <div *ngFor="let feature of features">
+            <ff4j-feature-card [feature]="feature"></ff4j-feature-card>
+        </div>
+    </div>
 </div>

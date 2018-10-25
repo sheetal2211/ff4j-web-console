@@ -1,4 +1,4 @@
-import {DebugElement, Type} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, DebugElement, Type} from '@angular/core';
 import {async, ComponentFixture, TestBed, TestModuleMetadata} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {} from 'jasmine';
@@ -35,8 +35,13 @@ export function initContext<T, H>(testedType: Type<T>, hostType: Type<H>, module
     if (moduleMetadata && moduleMetadata.declarations) {
       declarations.push(...moduleMetadata.declarations);
     }
-    TestBed.configureTestingModule({...moduleMetadata, declarations: declarations})
-      .compileComponents();
+    TestBed.configureTestingModule(
+        {
+            ...moduleMetadata,
+            declarations: declarations,
+            schemas: [CUSTOM_ELEMENTS_SCHEMA]
+        })
+        .compileComponents();
   }));
 
   beforeEach(function(this: TestContext<T, H>) {
