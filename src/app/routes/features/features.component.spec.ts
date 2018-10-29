@@ -1,13 +1,14 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-
-import {FeaturesComponent} from './features.component';
-import {FeatureService} from '../../shared/services/feature.service';
+import {AgGridModule} from 'ag-grid-angular';
 import {of, throwError} from 'rxjs';
 import {HttpClientModule} from '@angular/common/http';
 import {LoggerTestingModule, NGXLogger, NGXLoggerMock} from 'ngx-logger';
-import {AgGridModule} from 'ag-grid-angular';
+
+import {FeaturesComponent} from './features.component';
+import {FeatureService} from '../../shared/services/feature.service';
 import {FeatureCardModule} from '../../shared/components/feature-card/feature-card.module';
 import {Property} from '../../shared/models/Property';
+import {FeatureRendererComponent} from './feature-renderer.component';
 
 describe('FeaturesComponent', () => {
   let component: FeaturesComponent;
@@ -17,8 +18,8 @@ describe('FeaturesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule, FeatureCardModule, LoggerTestingModule, AgGridModule.withComponents([])],
-      declarations: [FeaturesComponent],
+      imports: [HttpClientModule, FeatureCardModule, LoggerTestingModule, AgGridModule.withComponents([FeatureRendererComponent])],
+      declarations: [FeaturesComponent, FeatureRendererComponent],
       providers: [FeatureService]
     })
       .compileComponents();
@@ -119,5 +120,23 @@ describe('FeaturesComponent', () => {
     fixture.detectChanges();
     expect(featureService.getFeatures).toHaveBeenCalledTimes(1);
     expect(logger.error).toHaveBeenCalledWith('Unable to fetch features', error);
+  });
+
+  it('should initialise ag-grid', () => {
+      const mockParams = {
+          api: {
+              context: null,
+              componentResolver: null,
+              gridOptionsWrapper: null
+          },
+          columnApi: null
+      };
+    component.onGridReady(mockParams);
+    fixture.detectChanges();
+    expect(component.gridOptions.headerHeight).toEqual(0);
+    expect(component.gridOptions.columnDefs.length).toEqual(0);
+    expect(component.gridApi).toBeDefined();
+    expect(component.columnApi).toBeNull();
+
   });
 });

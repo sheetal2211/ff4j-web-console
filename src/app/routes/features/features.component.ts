@@ -1,8 +1,11 @@
 import {Component, OnInit} from '@angular/core';
+import {ColumnApi, GridApi, GridOptions, RowNode} from 'ag-grid-community';
+
 import {FeatureService} from '../../shared/services/feature.service';
 import {Feature} from '../../shared/models/Feature';
 import {NGXLogger} from 'ngx-logger';
 import MapUtils from '../../shared/utils/map.utils';
+import {FeatureRendererComponent} from './feature-renderer.component';
 
 @Component({
   selector: 'ff4j-features',
@@ -12,8 +15,22 @@ import MapUtils from '../../shared/utils/map.utils';
 export class FeaturesComponent implements OnInit {
 
   features: Feature[];
+  gridApi: GridApi;
+  columnApi: ColumnApi;
+  gridOptions: GridOptions;
 
   constructor(private featureService: FeatureService, private logger: NGXLogger) {
+      this.gridOptions = {
+          headerHeight: 0,
+          columnDefs: [],
+          rowHeight: 160,
+          suppressHorizontalScroll: true,
+          fullWidthCellRenderer: 'fullWidthCellRenderer',
+          frameworkComponents: {
+              fullWidthCellRenderer: FeatureRendererComponent
+          },
+          isFullWidthCell: (rowNode: RowNode) => true
+      };
   }
 
   ngOnInit() {
@@ -32,5 +49,10 @@ export class FeaturesComponent implements OnInit {
         feature.customProperties = MapUtils.objectToMap(feature.customProperties);
       }
     });
+  }
+
+  onGridReady(params) {
+    this.gridApi = params.api;
+    this.columnApi = params.columnApi;
   }
 }
