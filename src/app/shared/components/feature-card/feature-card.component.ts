@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Feature} from '../../models/Feature';
 import {Property} from '../../models/Property';
-import {NGXLogger} from 'ngx-logger';
 
 @Component({
   selector: 'ff4j-feature-card',
@@ -11,12 +10,11 @@ import {NGXLogger} from 'ngx-logger';
 export class FeatureCardComponent implements OnInit {
   @Input() feature: Feature;
 
-  constructor(private logger: NGXLogger) {
+  constructor() {
   }
 
   ngOnInit() {
     if (!this.feature || null == this.feature) {
-      this.logger.error('feature property cannot be undefined');
       throw new Error('feature property cannot be undefined');
     }
   }
