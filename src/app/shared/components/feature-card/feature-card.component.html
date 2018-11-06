@@ -4,8 +4,10 @@
       <div class='col-sm-6 col-md-4 text-left d-flex align-items-center'>
         <mat-slide-toggle><span class='title-label'>{{feature?.uid}}</span></mat-slide-toggle>
       </div>
-      <div class='col-sm-6 col-md-3 d-flex align-items-center justify-content-center' *ngIf='feature?.group'>
-        <label class='label' style='padding-top: 7px'>Group &nbsp;</label><span class="badge badge-pill badge-secondary label">{{feature?.group}}</span>
+      <div class='col-sm-6 col-md-3 d-flex align-items-center justify-content-center'>
+        <span *ngIf='feature?.group'>
+          <label class='label' style='padding-top: 7px'>Group &nbsp;</label><span class="badge badge-pill badge-secondary label">{{feature?.group}}</span>
+        </span>
       </div>
       <div class='col-md-5 text-right'>
         <button mat-mini-fab color="primary">
@@ -33,7 +35,7 @@
         <mat-icon color="primary" [matBadge]='feature?.customProperties?.size' matBadgeColor='warn'>assignment</mat-icon>
         <ff4j-badges [values]='getPropertiesValues(feature?.customProperties)' [maxToShow]='1'></ff4j-badges>
       </div>
-      <div class="col-md-12 col-lg-4 d-flex align-items-center">
+      <div class="col-md-12 col-lg-4 d-flex align-items-center" *ngIf='feature?.flippingStrategy'>
         <mat-icon color="primary" [matBadge]='feature.permissions?.length' matBadgeColor='warn'>device_hub</mat-icon>
         <ff4j-badges [values]='feature.permissions'></ff4j-badges>
       </div>
