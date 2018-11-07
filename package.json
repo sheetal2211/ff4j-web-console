@@ -1,6 +1,23 @@
 {
   "name": "ff4j-web-console",
   "version": "0.0.0",
+  "description": "The web console for FF4J",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paul58914080/ff4j-web-console.git"
+  },
+  "keywords": [
+    "ff4j",
+    "feature toggling",
+    "console",
+    "feature"
+  ],
+  "author": "Paul WILLIAMS",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/paul58914080/ff4j-web-console/issues"
+  },
+  "homepage": "https://paul58914080.github.io/ff4j-web-console/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -12,7 +29,6 @@
     "start:proxy": "ng serve --proxy-config proxy.conf.json",
     "start:proxy:mock:server": "concurrently --kill-others \"npm run mock:server\" \"npm run start:proxy\""
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^7.0.1",
     "@angular/cdk": "^7.0.1",
