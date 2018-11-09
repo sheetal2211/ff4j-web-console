@@ -3,6 +3,7 @@ import {TestBed} from '@angular/core/testing';
 import {FeatureService} from './feature.service';
 import {HttpClientModule} from '@angular/common/http';
 import {asyncData} from '../../../testing';
+import {BaseService} from './base.service';
 
 describe('FeatureService', () => {
 
@@ -10,12 +11,12 @@ describe('FeatureService', () => {
   let featureService: FeatureService;
 
   beforeEach(() => {
-    httpClientSpy = jasmine.createSpyObj('HttpClient', [ 'get' ]);
-    featureService = new FeatureService(<any> httpClientSpy);
+    httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
+    featureService = new FeatureService(<any> httpClientSpy, new BaseService());
   });
 
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [ HttpClientModule ]
+    imports: [HttpClientModule]
   }));
 
   it('should be created', () => {
