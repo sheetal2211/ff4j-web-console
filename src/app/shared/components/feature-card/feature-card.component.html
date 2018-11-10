@@ -2,7 +2,7 @@
   <div class='container-fluid'>
     <div class='row d-flex'>
       <div class='col-sm-6 col-md-4 text-left d-flex align-items-center'>
-        <mat-slide-toggle><span class='title-label'>{{feature?.uid}}</span></mat-slide-toggle>
+        <mat-slide-toggle [checked]="feature?.enable"><span class='title-label'>{{feature?.uid}}</span></mat-slide-toggle>
       </div>
       <div class='col-sm-6 col-md-3 d-flex align-items-center justify-content-center'>
         <span *ngIf='feature?.group'>
