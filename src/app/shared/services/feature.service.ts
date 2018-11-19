@@ -15,4 +15,12 @@ export class FeatureService {
   getFeatures(): Observable<Feature[]> {
     return this.http.get<Feature[]>(this.baseService.getBaseUrl() + '/ff4j/store/features');
   }
+
+  toggle(featureUid: string, isOn: boolean): Observable<void> {
+    if (isOn) {
+      return this.http.post<void>(this.baseService.getBaseUrl() + `/ff4j/store/features/${featureUid}/enable`, {});
+    } else {
+      return this.http.post<void>(this.baseService.getBaseUrl() + `/ff4j/store/features/${featureUid}/disable`, {});
+    }
+  }
 }

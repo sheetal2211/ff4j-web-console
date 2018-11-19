@@ -2,12 +2,22 @@ import {FeatureCardComponent} from './feature-card.component';
 import {Component} from '@angular/core';
 import {Feature} from '../../models/Feature';
 import {initContext, TestContext} from '../../../../testing/test.context';
-import {MatButtonModule, MatCardModule, MatIconModule, MatSlideToggleModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatIconModule,
+  MatSlideToggleChange,
+  MatSlideToggleModule
+} from '@angular/material';
 import {Property} from '../../models/Property';
+import {FeatureService} from '../../services/feature.service';
+import {LoggerTestingModule, NGXLogger} from 'ngx-logger';
+import {HttpClientModule} from '@angular/common/http';
+import {of, throwError} from 'rxjs';
 
 @Component({
   template: `
-    <ff4j-feature-card [feature]='feature'></ff4j-feature-card>`
+      <ff4j-feature-card [feature]='feature'></ff4j-feature-card>`
 })
 class TesteeFeatureCardComponent {
   feature: Feature = {
@@ -15,7 +25,7 @@ class TesteeFeatureCardComponent {
     description: `Feature Card Description`,
     group: 'Group Name',
     enable: false,
-    permissions: [ 'ROLE_ADMIN', 'ROLE_USER', 'ROLE_ADMIN', 'ROLE_USER' ]
+    permissions: ['ROLE_ADMIN', 'ROLE_USER', 'ROLE_ADMIN', 'ROLE_USER']
   };
 }
 
@@ -27,8 +37,11 @@ describe('FeatureCardComponent', () => {
       MatCardModule,
       MatSlideToggleModule,
       MatButtonModule,
-      MatIconModule
-    ]
+      MatIconModule,
+      LoggerTestingModule,
+      HttpClientModule
+    ],
+    providers: [FeatureService]
   };
 
   initContext(FeatureCardComponent, TesteeFeatureCardComponent, moduleMetaData);
@@ -74,5 +87,27 @@ describe('FeatureCardComponent', () => {
     const testee = undefined;
     resultValues = this.testedComponent.getPropertiesValues(testee);
     expect(resultValues).toEqual([]);
+  });
+
+  it('should be able to toggle', function (this: Context) {
+    const featureUid = 'awesomeFeature';
+    const toggleState = true;
+    const featureService = this.fixture.debugElement.injector.get(FeatureService);
+    spyOn(featureService, 'toggle').and.returnValue(of());
+    this.testedComponent.toggle(featureUid, new MatSlideToggleChange(null, toggleState));
+    expect(featureService.toggle).toHaveBeenCalledWith(featureUid, toggleState);
+  });
+
+  it('should not be able to toggle when the server responds with error', function (this: Context) {
+    const featureUid = 'awesomeFeature';
+    const toggleState = true;
+    const featureService = this.fixture.debugElement.injector.get(FeatureService);
+    const logger = this.fixture.debugElement.injector.get(NGXLogger);
+    const error = new Error('Failed to toggle');
+    spyOn(featureService, 'toggle').and.returnValue(throwError(error));
+    spyOn(logger, 'error').and.callThrough();
+    this.testedComponent.toggle(featureUid, new MatSlideToggleChange(null, toggleState));
+    expect(featureService.toggle).toHaveBeenCalledWith(featureUid, toggleState);
+    expect(logger.error).toHaveBeenCalledWith(`Unable to toggle feature ${featureUid}`, error);
   });
 });
