@@ -7,16 +7,17 @@ import {Paginator} from './index';
 @Injectable()
 export class PaginatorService {
 
-    paginationReady: BehaviorSubject<Paginator.PaginatorInfo> = new BehaviorSubject({
-        pageSize: 0,
-        totalItems: 0,
-        gridApi: undefined
-    });
-    changes = this.paginationReady.asObservable().pipe(distinctUntilChanged());
+  paginationReady: BehaviorSubject<Paginator.PaginatorInfo> = new BehaviorSubject({
+    pageSize: 0,
+    totalItems: 0,
+    gridApi: undefined
+  });
+  changes = this.paginationReady.asObservable().pipe(distinctUntilChanged());
 
-    constructor() {
-    }
-    setPaginationInfo(paginatorInfo) {
-        this.paginationReady.next(paginatorInfo);
-    }
+  constructor() {
+  }
+
+  setPaginationInfo(paginatorInfo) {
+    this.paginationReady.next(paginatorInfo);
+  }
 }
