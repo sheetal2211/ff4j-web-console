@@ -9,6 +9,11 @@ import {FeatureService} from '../../shared/services/feature.service';
 import {FeatureCardModule} from '../../shared/components/feature-card/feature-card.module';
 import {Property} from '../../shared/models/Property';
 import {FeatureRendererComponent} from './feature-renderer.component';
+import {MatInputModule} from '@angular/material';
+import {FormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {By} from '@angular/platform-browser';
+import {PaginatorModule} from '../../shared/components/paginator/paginator.module';
 
 describe('FeaturesComponent', () => {
   let component: FeaturesComponent;
@@ -18,7 +23,16 @@ describe('FeaturesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule, FeatureCardModule, LoggerTestingModule, AgGridModule.withComponents([FeatureRendererComponent])],
+      imports: [
+          HttpClientModule,
+          FeatureCardModule,
+          PaginatorModule,
+          MatInputModule,
+          FormsModule,
+          BrowserAnimationsModule,
+          LoggerTestingModule,
+          AgGridModule.withComponents([FeatureRendererComponent])
+      ],
       declarations: [FeaturesComponent, FeatureRendererComponent],
       providers: [FeatureService]
     })
@@ -105,6 +119,7 @@ describe('FeaturesComponent', () => {
     fixture.detectChanges();
     expect(featureService.getFeatures).toHaveBeenCalledTimes(1);
     expect(component.features).toBeDefined();
+    expect(component.getQuickFilter({value: 'test'})).toBe('test');
     expect(JSON.stringify(component.features)).toEqual(JSON.stringify(expectedData));
     component.features.forEach((feature) => {
       if (feature.customProperties) {
@@ -113,6 +128,7 @@ describe('FeaturesComponent', () => {
     });
     expect(logger.debug).toHaveBeenCalledWith('Features : ' + JSON.stringify(serviceResponseData));
   });
+
   it('should log error when getFeatures fails', () => {
     const error = new Error('Unable to handle');
     spyOn(featureService, 'getFeatures').and.returnValue(throwError(error));
@@ -122,21 +138,10 @@ describe('FeaturesComponent', () => {
     expect(logger.error).toHaveBeenCalledWith('Unable to fetch features', error);
   });
 
-  it('should initialise ag-grid', () => {
-      const mockParams = {
-          api: {
-              context: null,
-              componentResolver: null,
-              gridOptionsWrapper: null
-          },
-          columnApi: null
-      };
-    component.onGridReady(mockParams);
-    fixture.detectChanges();
-    expect(component.gridOptions.headerHeight).toEqual(0);
-    expect(component.gridOptions.columnDefs.length).toEqual(0);
-    expect(component.gridApi).toBeDefined();
-    expect(component.columnApi).toBeNull();
-
+  it('should invoke onFilterTextBoxChanged on triggering input', () => {
+    spyOn(component, 'onFilterTextBoxChanged').and.callThrough();
+    const input = fixture.debugElement.query(By.css('input.quick-filter')).nativeElement;
+    input.dispatchEvent(new Event('input'));
+    expect(component.onFilterTextBoxChanged).toHaveBeenCalled();
   });
 });

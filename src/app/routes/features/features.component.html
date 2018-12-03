@@ -1,8 +1,14 @@
+<div class="container-fluid d-flex justify-content-between">
+    <mat-form-field>
+        <input class="quick-filter" matInput id="filter-text-box" type="text" placeholder="Filter"
+               [(ngModel)]="filter" (input)="onFilterTextBoxChanged()"/>
+    </mat-form-field>
+    <ff4j-paginator></ff4j-paginator>
+</div>
 <div class='ff4j-features'>
-     <ag-grid-angular
-         class="h-100 w-100 ag-theme-material"
-         [rowData]="features"
-         [gridOptions]="gridOptions"
-         (gridReady)="onGridReady($event)">
-     </ag-grid-angular>
+    <ag-grid-angular
+            class="h-100 w-100 ag-theme-material"
+            [rowData]="features"
+            [gridOptions]="gridOptions">
+    </ag-grid-angular>
 </div>

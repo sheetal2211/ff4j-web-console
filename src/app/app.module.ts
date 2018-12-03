@@ -8,6 +8,7 @@ import {FeaturesModule} from './routes/features/features.module';
 import {PropertiesModule} from './routes/properties/properties.module';
 import {DashboardModule} from './routes/dashboard/dashboard.module';
 import {LoggerModule, NgxLoggerLevel} from 'ngx-logger';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import {LoggerModule, NgxLoggerLevel} from 'ngx-logger';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     RoutesModule,
     LoggerModule.forRoot({ level: NgxLoggerLevel.INFO }),
     NavModule,
