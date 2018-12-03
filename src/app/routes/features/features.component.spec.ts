@@ -24,14 +24,14 @@ describe('FeaturesComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-          HttpClientModule,
-          FeatureCardModule,
-          PaginatorModule,
-          MatInputModule,
-          FormsModule,
-          BrowserAnimationsModule,
-          LoggerTestingModule,
-          AgGridModule.withComponents([FeatureRendererComponent])
+        HttpClientModule,
+        FeatureCardModule,
+        PaginatorModule,
+        MatInputModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        LoggerTestingModule,
+        AgGridModule.withComponents([FeatureRendererComponent])
       ],
       declarations: [FeaturesComponent, FeatureRendererComponent],
       providers: [FeatureService]

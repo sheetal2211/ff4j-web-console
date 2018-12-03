@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ColumnApi, GridApi, GridOptions, RowNode, ColDef} from 'ag-grid-community';
+import {ColDef, ColumnApi, GridApi, GridOptions, RowNode} from 'ag-grid-community';
 
 import {FeatureService} from '../../shared/services/feature.service';
 import {Feature} from '../../shared/models/Feature';
@@ -26,55 +26,55 @@ export class FeaturesComponent implements OnInit {
   constructor(private featureService: FeatureService,
               private logger: NGXLogger,
               private paginatorService: PaginatorService) {
-      const colDefs: ColDef[] = [
-          {
-              field: 'uid',
-              getQuickFilterText: this.getQuickFilter
-          },
-          {
-              field: 'description',
-              getQuickFilterText: this.getQuickFilter
-          },
-          {
-              field: 'group',
-              getQuickFilterText: this.getQuickFilter
-          },
-          {
-              field: 'permissions',
-              getQuickFilterText: this.getQuickFilter
-          }
-      ];
-      this.gridOptions = {
-          headerHeight: 0,
-          columnDefs: colDefs,
-          rowHeight: 160,
-          suppressHorizontalScroll: true,
-          enableFilter: true,
-          fullWidthCellRenderer: 'fullWidthCellRenderer',
-          frameworkComponents: {
-              fullWidthCellRenderer: FeatureRendererComponent
-          },
-          suppressPaginationPanel: true,
-          isFullWidthCell: (rowNode: RowNode) => true,
-          onGridReady: (params) => {
-              this.gridApi = params.api;
-              this.columnApi = params.columnApi;
-          },
-          pagination: true,
-          paginationAutoPageSize: true,
-          onPaginationChanged: (params) => {
-              this.gridApi = params.api;
-              this.notifyPaginationService();
-          }
-      };
+    const colDefs: ColDef[] = [
+      {
+        field: 'uid',
+        getQuickFilterText: this.getQuickFilter
+      },
+      {
+        field: 'description',
+        getQuickFilterText: this.getQuickFilter
+      },
+      {
+        field: 'group',
+        getQuickFilterText: this.getQuickFilter
+      },
+      {
+        field: 'permissions',
+        getQuickFilterText: this.getQuickFilter
+      }
+    ];
+    this.gridOptions = {
+      headerHeight: 0,
+      columnDefs: colDefs,
+      rowHeight: 160,
+      suppressHorizontalScroll: true,
+      enableFilter: true,
+      fullWidthCellRenderer: 'fullWidthCellRenderer',
+      frameworkComponents: {
+        fullWidthCellRenderer: FeatureRendererComponent
+      },
+      suppressPaginationPanel: true,
+      isFullWidthCell: (rowNode: RowNode) => true,
+      onGridReady: (params) => {
+        this.gridApi = params.api;
+        this.columnApi = params.columnApi;
+      },
+      pagination: true,
+      paginationAutoPageSize: true,
+      onPaginationChanged: (params) => {
+        this.gridApi = params.api;
+        this.notifyPaginationService();
+      }
+    };
   }
 
   notifyPaginationService() {
-      this.paginatorService.setPaginationInfo({
-          pageSize: this.gridApi.paginationGetPageSize(),
-          totalItems: this.gridApi.paginationGetRowCount(),
-          gridApi: this.gridApi
-      });
+    this.paginatorService.setPaginationInfo({
+      pageSize: this.gridApi.paginationGetPageSize(),
+      totalItems: this.gridApi.paginationGetRowCount(),
+      gridApi: this.gridApi
+    });
   }
 
   ngOnInit() {
@@ -96,6 +96,6 @@ export class FeaturesComponent implements OnInit {
   }
 
   onFilterTextBoxChanged() {
-      this.gridOptions.api.setQuickFilter(this.filter);
+    this.gridOptions.api.setQuickFilter(this.filter);
   }
 }
