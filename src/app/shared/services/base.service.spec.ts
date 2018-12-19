@@ -1,7 +1,7 @@
-import {TestBed} from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
-import {BaseService} from './base.service';
-import {environment} from '../../../environments/environment';
+import { BaseService } from './base.service';
+import { environment } from '../../../environments/environment';
 
 describe('BaseService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

@@ -1,4 +1,4 @@
-import {PaginatorModule} from './paginator.module';
+import { PaginatorModule } from './paginator.module';
 
 describe('PaginatorModule', () => {
   let paginatorModule: PaginatorModule;

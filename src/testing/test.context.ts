@@ -1,7 +1,6 @@
-import {CUSTOM_ELEMENTS_SCHEMA, DebugElement, Type} from '@angular/core';
-import {async, ComponentFixture, TestBed, TestModuleMetadata} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {} from 'jasmine';
+import { CUSTOM_ELEMENTS_SCHEMA, DebugElement, Type } from '@angular/core';
+import { async, ComponentFixture, TestBed, TestModuleMetadata } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 export class TestContext<T, H> {
   fixture: ComponentFixture<H>;
@@ -9,6 +8,7 @@ export class TestContext<T, H> {
   tested: DebugElement;
   testedComponent: T;
   testedElement: any;
+
   /*
    * Add any shortcuts you may need.
    * Here is an example of one, but you could for instance add shortcuts to:
@@ -31,17 +31,15 @@ export function initContext<T, H>(testedType: Type<T>, hostType: Type<H>, module
   });
 
   beforeEach(async(function(this: TestContext<T, H>) {
-    const declarations = [ testedType, hostType ];
+    const declarations = [testedType, hostType];
     if (moduleMetadata && moduleMetadata.declarations) {
       declarations.push(...moduleMetadata.declarations);
     }
-    TestBed.configureTestingModule(
-        {
-            ...moduleMetadata,
-            declarations: declarations,
-            schemas: [CUSTOM_ELEMENTS_SCHEMA]
-        })
-        .compileComponents();
+    TestBed.configureTestingModule({
+      ...moduleMetadata,
+      declarations: declarations,
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    }).compileComponents();
   }));
 
   beforeEach(function(this: TestContext<T, H>) {

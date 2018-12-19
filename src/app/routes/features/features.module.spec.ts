@@ -1,4 +1,4 @@
-import {FeaturesModule} from './features.module';
+import { FeaturesModule } from './features.module';
 
 describe('FeaturesModule', () => {
   let featuresModule: FeaturesModule;

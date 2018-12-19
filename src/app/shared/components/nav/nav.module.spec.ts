@@ -1,4 +1,4 @@
-import {NavModule} from './nav.module';
+import { NavModule } from './nav.module';
 
 describe('NavModule', () => {
   let navModule: NavModule;

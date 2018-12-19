@@ -1,4 +1,4 @@
-import {GridApi} from 'ag-grid-community';
+import { GridApi } from 'ag-grid-community';
 
 declare namespace Paginator {
   export interface PaginatorInfo {

@@ -1,17 +1,16 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Feature} from '../../models/Feature';
-import {Property} from '../../models/Property';
+import { Component, Input, OnInit } from '@angular/core';
+import { Feature } from '../../models/Feature';
+import { Property } from '../../models/Property';
 
 @Component({
   selector: 'ff4j-feature-card',
   templateUrl: './feature-card.component.html',
-  styleUrls: [ './feature-card.component.scss' ]
+  styleUrls: ['./feature-card.component.scss']
 })
 export class FeatureCardComponent implements OnInit {
   @Input() feature: Feature;
 
-  constructor() {
-  }
+  constructor() {}
 
   ngOnInit() {
     if (!this.feature || null == this.feature) {

@@ -1,12 +1,9 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {PropertiesComponent} from './properties.component';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { PropertiesComponent } from './properties.component';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   declarations: [PropertiesComponent]
 })
-export class PropertiesModule {
-}
+export class PropertiesModule {}

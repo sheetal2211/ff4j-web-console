@@ -1,4 +1,4 @@
-import {PropertiesModule} from './properties.module';
+import { PropertiesModule } from './properties.module';
 
 describe('PropertiesModule', () => {
   let propertiesModule: PropertiesModule;

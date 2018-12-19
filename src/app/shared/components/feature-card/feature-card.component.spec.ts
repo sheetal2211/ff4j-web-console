@@ -1,13 +1,14 @@
-import {FeatureCardComponent} from './feature-card.component';
-import {Component} from '@angular/core';
-import {Feature} from '../../models/Feature';
-import {initContext, TestContext} from '../../../../testing/test.context';
-import {MatButtonModule, MatCardModule, MatIconModule, MatSlideToggleModule} from '@angular/material';
-import {Property} from '../../models/Property';
+import { FeatureCardComponent } from './feature-card.component';
+import { Component } from '@angular/core';
+import { Feature } from '../../models/Feature';
+import { initContext, TestContext } from '../../../../testing/test.context';
+import { MatButtonModule, MatCardModule, MatIconModule, MatSlideToggleModule } from '@angular/material';
+import { Property } from '../../models/Property';
 
 @Component({
   template: `
-    <ff4j-feature-card [feature]='feature'></ff4j-feature-card>`
+    <ff4j-feature-card [feature]="feature"></ff4j-feature-card>
+  `
 })
 class TesteeFeatureCardComponent {
   feature: Feature = {
@@ -15,7 +16,7 @@ class TesteeFeatureCardComponent {
     description: `Feature Card Description`,
     group: 'Group Name',
     enable: false,
-    permissions: [ 'ROLE_ADMIN', 'ROLE_USER', 'ROLE_ADMIN', 'ROLE_USER' ]
+    permissions: ['ROLE_ADMIN', 'ROLE_USER', 'ROLE_ADMIN', 'ROLE_USER']
   };
 }
 
@@ -23,28 +24,23 @@ describe('FeatureCardComponent', () => {
   type Context = TestContext<FeatureCardComponent, TesteeFeatureCardComponent>;
 
   const moduleMetaData = {
-    imports: [
-      MatCardModule,
-      MatSlideToggleModule,
-      MatButtonModule,
-      MatIconModule
-    ]
+    imports: [MatCardModule, MatSlideToggleModule, MatButtonModule, MatIconModule]
   };
 
   initContext(FeatureCardComponent, TesteeFeatureCardComponent, moduleMetaData);
 
-  it('should create', function (this: Context) {
+  it('should create', function(this: Context) {
     this.detectChanges();
     expect(this.hostComponent).toBeTruthy();
     expect(this.testedComponent).toBeTruthy();
   });
 
-  it('should throw error when feature is undefined', function (this: Context) {
+  it('should throw error when feature is undefined', function(this: Context) {
     this.testedComponent.feature = undefined;
     expect(() => this.testedComponent.ngOnInit()).toThrow(new Error('feature property cannot be undefined'));
   });
 
-  it('should have got the input value for feature', function (this: Context) {
+  it('should have got the input value for feature', function(this: Context) {
     this.detectChanges();
     expect(this.testedComponent.feature.uid).toBe('Feature_UID');
     expect(this.testedComponent.feature.description).toBe(`Feature Card Description`);
@@ -57,15 +53,15 @@ describe('FeatureCardComponent', () => {
     expect(this.testedComponent.feature.enable).toBeTruthy();
   });
 
-  it('should be able to format and show customProperties in key value', function (this: Context) {
+  it('should be able to format and show customProperties in key value', function(this: Context) {
     // The customProperties needs to be transformed to a Map
     const properties = new Map<string, Property>();
     properties.set('SampleProperty', {
-      'name': 'SampleProperty',
-      'description': '',
-      'type': 'org.ff4j.property.PropertyString',
-      'value': 'go!',
-      'fixedValues': []
+      name: 'SampleProperty',
+      description: '',
+      type: 'org.ff4j.property.PropertyString',
+      value: 'go!',
+      fixedValues: []
     });
     this.detectChanges();
     let resultValues = this.testedComponent.getPropertiesValues(properties);

@@ -1,9 +1,9 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {HttpClientModule} from '@angular/common/http';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientModule } from '@angular/common/http';
 
-import {FeatureCardModule} from '../../shared/components/feature-card/feature-card.module';
-import {FeatureRendererComponent} from './feature-renderer.component';
-import {LoggerTestingModule} from 'ngx-logger';
+import { FeatureCardModule } from '../../shared/components/feature-card/feature-card.module';
+import { FeatureRendererComponent } from './feature-renderer.component';
+import { LoggerTestingModule } from 'ngx-logger';
 
 describe('FeatureRendererComponent', () => {
   let component: FeatureRendererComponent;
@@ -13,8 +13,7 @@ describe('FeatureRendererComponent', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule, FeatureCardModule, LoggerTestingModule],
       declarations: [FeatureRendererComponent]
-    })
-      .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,19 +1,19 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {AgGridModule} from 'ag-grid-angular';
-import {of, throwError} from 'rxjs';
-import {HttpClientModule} from '@angular/common/http';
-import {LoggerTestingModule, NGXLogger, NGXLoggerMock} from 'ngx-logger';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { AgGridModule } from 'ag-grid-angular';
+import { of, throwError } from 'rxjs';
+import { HttpClientModule } from '@angular/common/http';
+import { LoggerTestingModule, NGXLogger, NGXLoggerMock } from 'ngx-logger';
 
-import {FeaturesComponent} from './features.component';
-import {FeatureService} from '../../shared/services/feature.service';
-import {FeatureCardModule} from '../../shared/components/feature-card/feature-card.module';
-import {Property} from '../../shared/models/Property';
-import {FeatureRendererComponent} from './feature-renderer.component';
-import {MatInputModule} from '@angular/material';
-import {FormsModule} from '@angular/forms';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {By} from '@angular/platform-browser';
-import {PaginatorModule} from '../../shared/components/paginator/paginator.module';
+import { FeaturesComponent } from './features.component';
+import { FeatureService } from '../../shared/services/feature.service';
+import { FeatureCardModule } from '../../shared/components/feature-card/feature-card.module';
+import { Property } from '../../shared/models/Property';
+import { FeatureRendererComponent } from './feature-renderer.component';
+import { MatInputModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { By } from '@angular/platform-browser';
+import { PaginatorModule } from '../../shared/components/paginator/paginator.module';
 
 describe('FeaturesComponent', () => {
   let component: FeaturesComponent;
@@ -35,8 +35,7 @@ describe('FeaturesComponent', () => {
       ],
       declarations: [FeaturesComponent, FeatureRendererComponent],
       providers: [FeatureService]
-    })
-      .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -57,9 +56,7 @@ describe('FeaturesComponent', () => {
         enable: false,
         description: 'the admin page',
         group: 'admin',
-        permissions: [
-          'ROLE_ADMIN'
-        ],
+        permissions: ['ROLE_ADMIN'],
         flippingStrategy: {
           type: 'org.ff4j.strategy.PonderationStrategy',
           initParams: {
@@ -67,12 +64,12 @@ describe('FeaturesComponent', () => {
           }
         },
         customProperties: {
-          'SampleProperty': {
-            'name': 'SampleProperty',
-            'description': '',
-            'type': 'org.ff4j.property.PropertyString',
-            'value': 'go!',
-            'fixedValues': []
+          SampleProperty: {
+            name: 'SampleProperty',
+            description: '',
+            type: 'org.ff4j.property.PropertyString',
+            value: 'go!',
+            fixedValues: []
           }
         }
       },
@@ -85,11 +82,11 @@ describe('FeaturesComponent', () => {
     // The customProperties needs to be transformed to a Map
     const properties = new Map<string, Property>();
     properties.set('SampleProperty', {
-      'name': 'SampleProperty',
-      'description': '',
-      'type': 'org.ff4j.property.PropertyString',
-      'value': 'go!',
-      'fixedValues': []
+      name: 'SampleProperty',
+      description: '',
+      type: 'org.ff4j.property.PropertyString',
+      value: 'go!',
+      fixedValues: []
     });
     const expectedData = [
       {
@@ -97,9 +94,7 @@ describe('FeaturesComponent', () => {
         enable: false,
         description: 'the admin page',
         group: 'admin',
-        permissions: [
-          'ROLE_ADMIN'
-        ],
+        permissions: ['ROLE_ADMIN'],
         flippingStrategy: {
           type: 'org.ff4j.strategy.PonderationStrategy',
           initParams: {
@@ -119,9 +114,9 @@ describe('FeaturesComponent', () => {
     fixture.detectChanges();
     expect(featureService.getFeatures).toHaveBeenCalledTimes(1);
     expect(component.features).toBeDefined();
-    expect(component.getQuickFilter({value: 'test'})).toBe('test');
+    expect(component.getQuickFilter({ value: 'test' })).toBe('test');
     expect(JSON.stringify(component.features)).toEqual(JSON.stringify(expectedData));
-    component.features.forEach((feature) => {
+    component.features.forEach(feature => {
       if (feature.customProperties) {
         expect(feature.customProperties).toEqual(jasmine.any(Map));
       }

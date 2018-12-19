@@ -1,13 +1,14 @@
-import {BadgesComponent} from './badges.component';
-import {Component} from '@angular/core';
-import {initContext, TestContext} from '../../../../testing/test.context';
+import { BadgesComponent } from './badges.component';
+import { Component } from '@angular/core';
+import { initContext, TestContext } from '../../../../testing/test.context';
 
 @Component({
   template: `
-    <ff4j-badges [values]='values' [maxToShow]='maxToShow'></ff4j-badges>`
+    <ff4j-badges [values]="values" [maxToShow]="maxToShow"></ff4j-badges>
+  `
 })
 class TesteeBadgeComponent {
-  values = [ '1', '2', '3' ];
+  values = ['1', '2', '3'];
   maxToShow = 1;
 }
 

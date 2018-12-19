@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'ff4j-properties',
@@ -6,11 +6,7 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./properties.component.scss']
 })
 export class PropertiesComponent implements OnInit {
+  constructor() {}
 
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

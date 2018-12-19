@@ -1,12 +1,11 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'ff4j-badges',
   templateUrl: './badges.component.html',
-  styleUrls: [ './badges.component.scss' ]
+  styleUrls: ['./badges.component.scss']
 })
 export class BadgesComponent {
-
   @Input()
   values: string[];
 
@@ -15,6 +14,5 @@ export class BadgesComponent {
 
   showAll = false;
 
-  constructor() {
-  }
+  constructor() {}
 }

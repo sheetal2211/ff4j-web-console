@@ -1,5 +1,5 @@
-import {Property} from './Property';
-import {FlippingStrategy} from './FlippingStrategy';
+import { Property } from './Property';
+import { FlippingStrategy } from './FlippingStrategy';
 
 export class Feature {
   uid: string;

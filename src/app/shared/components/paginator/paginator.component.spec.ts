@@ -1,7 +1,7 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {MatPaginatorModule} from '@angular/material';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatPaginatorModule } from '@angular/material';
 
-import {PaginatorComponent, PaginatorService} from './index';
+import { PaginatorComponent, PaginatorService } from './index';
 
 describe('PaginatorComponent', () => {
   let component: PaginatorComponent;
@@ -12,8 +12,7 @@ describe('PaginatorComponent', () => {
       imports: [MatPaginatorModule],
       declarations: [PaginatorComponent],
       providers: [PaginatorService]
-    })
-      .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -28,8 +27,7 @@ describe('PaginatorComponent', () => {
 
   it('should invoke onPageChange method when the page is changed', () => {
     spyOn(component, 'onPageChange').and.callThrough();
-    fixture.nativeElement.querySelector('mat-paginator')
-      .dispatchEvent(new Event('page'));
+    fixture.nativeElement.querySelector('mat-paginator').dispatchEvent(new Event('page'));
     fixture.detectChanges();
     expect(component.onPageChange).toHaveBeenCalled();
   });
