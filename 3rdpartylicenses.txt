@@ -229,6 +229,9 @@ Apache-2.0
  
 
 
+@angular/core
+MIT
+
 ag-grid-angular
 MIT
 The MIT License
@@ -422,12 +425,6 @@ THE SOFTWARE.
 @angular/material/slide-toggle
 
 @angular/material/toolbar
-
-@angular/core
-MIT
-
-@angular/compiler
-MIT
 
 zone.js
 MIT
