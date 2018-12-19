@@ -4,7 +4,7 @@ import { initContext, TestContext } from '../../../../testing/test.context';
 
 @Component({
   template: `
-    <ff4j-badges [values]="values" [maxToShow]="maxToShow"></ff4j-badges>
+      <ff4j-badges [values]="values" [maxToShow]="maxToShow"></ff4j-badges>
   `
 })
 class TesteeBadgeComponent {

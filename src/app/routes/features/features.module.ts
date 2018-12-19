@@ -22,4 +22,5 @@ import { PaginatorModule } from '../../shared/components/paginator/paginator.mod
   providers: [FeatureService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class FeaturesModule {}
+export class FeaturesModule {
+}

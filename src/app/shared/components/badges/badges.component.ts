@@ -14,5 +14,6 @@ export class BadgesComponent {
 
   showAll = false;
 
-  constructor() {}
+  constructor() {
+  }
 }

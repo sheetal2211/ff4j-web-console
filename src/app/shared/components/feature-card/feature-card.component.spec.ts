@@ -7,7 +7,7 @@ import { Property } from '../../models/Property';
 
 @Component({
   template: `
-    <ff4j-feature-card [feature]="feature"></ff4j-feature-card>
+      <ff4j-feature-card [feature]="feature"></ff4j-feature-card>
   `
 })
 class TesteeFeatureCardComponent {

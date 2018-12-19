@@ -9,4 +9,5 @@ import { PaginatorComponent, PaginatorService } from './index';
   exports: [PaginatorComponent],
   providers: [PaginatorService]
 })
-export class PaginatorModule {}
+export class PaginatorModule {
+}

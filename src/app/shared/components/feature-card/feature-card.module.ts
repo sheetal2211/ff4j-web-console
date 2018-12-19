@@ -10,4 +10,5 @@ import { BadgesModule } from '../badges/badges.module';
   exports: [FeatureCardComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class FeatureCardModule {}
+export class FeatureCardModule {
+}

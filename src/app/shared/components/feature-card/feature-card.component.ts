@@ -10,7 +10,8 @@ import { Property } from '../../models/Property';
 export class FeatureCardComponent implements OnInit {
   @Input() feature: Feature;
 
-  constructor() {}
+  constructor() {
+  }
 
   ngOnInit() {
     if (!this.feature || null == this.feature) {

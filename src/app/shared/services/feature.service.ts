@@ -8,7 +8,8 @@ import { BaseService } from './base.service';
   providedIn: 'root'
 })
 export class FeatureService {
-  constructor(private http: HttpClient, private baseService: BaseService) {}
+  constructor(private http: HttpClient, private baseService: BaseService) {
+  }
 
   getFeatures(): Observable<Feature[]> {
     return this.http.get<Feature[]>(this.baseService.getBaseUrl() + '/ff4j/store/features');

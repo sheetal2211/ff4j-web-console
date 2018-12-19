@@ -6,4 +6,5 @@ import { PropertiesComponent } from './properties.component';
   imports: [CommonModule],
   declarations: [PropertiesComponent]
 })
-export class PropertiesModule {}
+export class PropertiesModule {
+}

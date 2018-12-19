@@ -8,4 +8,5 @@ import { RoutesModule } from '../../../routes/routes.module';
   declarations: [NavComponent],
   exports: [NavComponent]
 })
-export class NavModule {}
+export class NavModule {
+}

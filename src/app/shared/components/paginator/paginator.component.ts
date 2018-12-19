@@ -14,7 +14,8 @@ export class PaginatorComponent implements OnInit, OnDestroy {
   gridApi: GridApi;
   subscription: Subscription;
 
-  constructor(private paginatorService: PaginatorService) {}
+  constructor(private paginatorService: PaginatorService) {
+  }
 
   ngOnInit() {
     this.subscription = this.paginatorService.changes.subscribe((paginatorInfo: Paginator.PaginatorInfo) => {

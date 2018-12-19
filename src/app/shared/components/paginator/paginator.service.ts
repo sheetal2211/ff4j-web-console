@@ -13,7 +13,8 @@ export class PaginatorService {
   });
   changes = this.paginationReady.asObservable().pipe(distinctUntilChanged());
 
-  constructor() {}
+  constructor() {
+  }
 
   setPaginationInfo(paginatorInfo) {
     this.paginationReady.next(paginatorInfo);

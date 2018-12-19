@@ -7,4 +7,5 @@ import { BadgesComponent } from './badges.component';
   declarations: [BadgesComponent],
   exports: [BadgesComponent]
 })
-export class BadgesModule {}
+export class BadgesModule {
+}
