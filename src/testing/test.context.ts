@@ -1,6 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, DebugElement, Type } from '@angular/core';
 import { async, ComponentFixture, TestBed, TestModuleMetadata } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import {} from 'jasmine';
 
 export class TestContext<T, H> {
   fixture: ComponentFixture<H>;
