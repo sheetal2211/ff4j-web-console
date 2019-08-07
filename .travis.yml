@@ -1,29 +1,31 @@
 language: node_js
-node_js:
-- "8.11"
+env:
+  - NODE_VERSION=12 CC=clang CXX=clang++
+before_install:
+  - nvm install $NODE_VERSION
 
 branches:
   only:
-  - master
+    - master
 
 addons:
   chrome: stable
 
 before_script:
-- yarn global add @angular/cli
+  - yarn global add @angular/cli
 
 cache:
   yarn: true
   directories:
-  - node_modules
+    - node_modules
 
 script:
-- npm run lint
-- ng test --watch=false
-- ng build --prod --base-href https://paul58914080.github.io/ff4j-web-console/
+  - npm run lint
+  - ng test --watch=false
+  - ng build --prod --base-href https://paul58914080.github.io/ff4j-web-console/
 
 after_success:
-- cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 
 deploy:
   provider: pages
