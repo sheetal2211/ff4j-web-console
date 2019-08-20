@@ -8,6 +8,7 @@ import { FeatureRendererComponent } from './feature-renderer.component';
 import { MatInputModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { PaginatorModule } from '../../shared/components/paginator/paginator.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -16,11 +17,11 @@ import { PaginatorModule } from '../../shared/components/paginator/paginator.mod
     FeatureCardModule,
     MatInputModule,
     PaginatorModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   declarations: [FeaturesComponent, FeatureRendererComponent],
   providers: [FeatureService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class FeaturesModule {
-}
+export class FeaturesModule {}
