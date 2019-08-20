@@ -2,8 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AgGridModule } from 'ag-grid-angular';
 import { of, throwError } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
-import { LoggerTestingModule, NGXLogger, NGXLoggerMock } from 'ngx-logger';
-
 import { FeaturesComponent } from './features.component';
 import { FeatureService } from '../../shared/services/feature.service';
 import { FeatureCardModule } from '../../shared/components/feature-card/feature-card.module';
@@ -14,6 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
 import { PaginatorModule } from '../../shared/components/paginator/paginator.module';
+import { LoggerTestingModule, NGXLoggerMock } from 'ngx-logger/testing';
+import { NGXLogger } from 'ngx-logger';
 
 describe('FeaturesComponent', () => {
   let component: FeaturesComponent;
