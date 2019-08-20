@@ -7,7 +7,7 @@ import { Property } from '../../models/Property';
 
 @Component({
   template: `
-      <ff4j-feature-card [feature]="feature"></ff4j-feature-card>
+    <ff4j-feature-card [feature]="feature"></ff4j-feature-card>
   `
 })
 class TesteeFeatureCardComponent {
@@ -30,7 +30,7 @@ describe('FeatureCardComponent', () => {
   initContext(FeatureCardComponent, TesteeFeatureCardComponent, moduleMetaData);
 
   it('should create', function(this: Context) {
-    this.detectChanges();
+    this.fixture.detectChanges();
     expect(this.hostComponent).toBeTruthy();
     expect(this.testedComponent).toBeTruthy();
   });
@@ -41,7 +41,7 @@ describe('FeatureCardComponent', () => {
   });
 
   it('should have got the input value for feature', function(this: Context) {
-    this.detectChanges();
+    this.fixture.detectChanges();
     expect(this.testedComponent.feature.uid).toBe('Feature_UID');
     expect(this.testedComponent.feature.description).toBe(`Feature Card Description`);
     expect(this.testedComponent.feature.group).toBe('Group Name');
@@ -49,7 +49,7 @@ describe('FeatureCardComponent', () => {
     expect(this.testedComponent.feature.permissions.length).toEqual(4);
     // on change should apply
     this.hostComponent.feature.enable = true;
-    this.detectChanges();
+    this.fixture.detectChanges();
     expect(this.testedComponent.feature.enable).toBeTruthy();
   });
 
@@ -63,7 +63,7 @@ describe('FeatureCardComponent', () => {
       value: 'go!',
       fixedValues: []
     });
-    this.detectChanges();
+    this.fixture.detectChanges();
     let resultValues = this.testedComponent.getPropertiesValues(properties);
     expect(resultValues).toEqual(['SampleProperty = go!']);
     // if customProperties is undefined or empty it should also result in empty

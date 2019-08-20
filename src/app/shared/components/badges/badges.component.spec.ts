@@ -4,7 +4,7 @@ import { initContext, TestContext } from '../../../../testing/test.context';
 
 @Component({
   template: `
-      <ff4j-badges [values]="values" [maxToShow]="maxToShow"></ff4j-badges>
+    <ff4j-badges [values]="values" [maxToShow]="maxToShow"></ff4j-badges>
   `
 })
 class TesteeBadgeComponent {
@@ -29,7 +29,7 @@ describe('BadgesComponent', () => {
     // on change should apply
     this.hostComponent.values = ['4', '5'];
     this.hostComponent.maxToShow = 2;
-    this.detectChanges();
+    this.fixture.detectChanges();
     expect(this.testedComponent.values).toEqual(['4', '5']);
     expect(this.testedComponent.maxToShow).toEqual(2);
   });
