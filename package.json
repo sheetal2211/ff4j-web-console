@@ -45,7 +45,7 @@
     "ag-grid-angular": "^21.2.2",
     "ag-grid-community": "^21.2.2",
     "bootstrap": "^4.2.1",
-    "core-js": "^3.4.0",
+    "core-js": "^3.4.1",
     "ngx-logger": "^4.0.7",
     "rxjs": "^6.5.3",
     "zone.js": "~0.10.2"
