@@ -29,8 +29,8 @@
     "e2e": "ng e2e",
     "mock:server": "json-server --watch mock/data.json",
     "lint:fix": "ng lint --fix",
-    "lint:html": "htmlhint --config .htmlhintrc src/app/**/*.html",
-    "lint:styles": "stylelint src/app/**/*.scss",
+    "lint:html": "htmlhint --config lint/.htmlhintrc src/app/**/*.html",
+    "lint:styles": "stylelint --config lint/.stylelintrc.json src/app/**/*.scss",
     "format:prettier": "pretty-quick --staged",
     "format:all": "run-s lint:styles lint:fix lint:html format:prettier"
   },
