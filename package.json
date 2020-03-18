@@ -1,0 +1,87 @@
+{
+  "name": "ff4j-web-console",
+  "version": "0.0.0",
+  "description": "The web console for FF4J",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paul58914080/ff4j-web-console.git"
+  },
+  "keywords": [
+    "ff4j",
+    "feature toggling",
+    "console",
+    "feature"
+  ],
+  "author": "Paul WILLIAMS",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/paul58914080/ff4j-web-console/issues"
+  },
+  "homepage": "https://paul58914080.github.io/ff4j-web-console/",
+  "private": false,
+  "scripts": {
+    "ng": "ng",
+    "start": "concurrently --kill-others \"npm run mock:server\" \"ng serve\"",
+    "build": "ng build",
+    "test": "ng test",
+    "test:once": "ng test --watch=false",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "mock:server": "json-server --watch mock/data.json",
+    "lint:fix": "ng lint --fix",
+    "lint:html": "htmlhint --config .htmlhintrc src/app/**/*.html",
+    "lint:styles": "stylelint src/app/**/*.scss",
+    "format:prettier": "pretty-quick --staged",
+    "format:all": "run-s lint:styles lint:fix lint:html format:prettier"
+  },
+  "dependencies": {
+    "@angular/animations": "~9.0.6",
+    "@angular/common": "~9.0.6",
+    "@angular/compiler": "~9.0.6",
+    "@angular/core": "~9.0.6",
+    "@angular/forms": "~9.0.6",
+    "@angular/platform-browser": "~9.0.6",
+    "@angular/platform-browser-dynamic": "~9.0.6",
+    "@angular/router": "~9.0.6",
+    "rxjs": "~6.5.4",
+    "tslib": "^1.10.0",
+    "zone.js": "~0.10.2"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.900.6",
+    "@angular/cli": "~9.0.6",
+    "@angular/compiler-cli": "~9.0.6",
+    "@angular/language-service": "~9.0.6",
+    "@types/jasmine": "~3.5.9",
+    "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^13.9.1",
+    "codelyzer": "^5.1.2",
+    "concurrently": "^5.1.0",
+    "htmlhint": "^0.11.0",
+    "husky": "^4.2.3",
+    "jasmine-core": "~3.5.0",
+    "jasmine-spec-reporter": "~4.2.1",
+    "json-server": "^0.16.1",
+    "karma": "~4.4.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage-istanbul-reporter": "~2.1.0",
+    "karma-jasmine": "~3.1.1",
+    "karma-jasmine-html-reporter": "^1.4.2",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
+    "protractor": "~5.4.3",
+    "stylelint": "^13.2.1",
+    "stylelint-config-sass-guidelines": "^7.0.0",
+    "stylelint-scss": "^3.15.0",
+    "ts-node": "~8.6.2",
+    "tslint": "~5.20.1",
+    "typescript": "~3.7.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run format:all",
+      "pre-push": "npm run test:once"
+    }
+  }
+}
