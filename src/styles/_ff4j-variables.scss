@@ -1,0 +1,35 @@
+// Overwrite Bootstrap's variables here
+// You can find them in node_modules/bootstrap/scss/_variables.scss
+// Copy the variables you need into this file, don't modify files under node_modules/
+
+// Enabling shadows and gradients
+$enable-shadows: false;
+$enable-gradients: false;
+
+// Changing the body background and text
+$body-bg: #f4fef4;
+$body-color: #151417;
+
+// Changing the border radius of buttons
+$border-radius: 0;
+
+// Changing the theme colors
+$primary: #1a936f;
+
+// global fonts
+$font-family-base: "Open Sans", sans-serif;
+$font-size-base: 0.875rem;
+
+// for heading
+$headings-font-family: "Overpass", sans-serif;
+
+// for badge
+$badge-padding-y: 0.5em;
+$badge-padding-x: 0.5em;
+$badge-font-size: 80%;
+$badge-font-weight: 400;
+
+// for form controls
+$input-border-radius: 0;
+$input-padding-y: 0.3rem;
+$input-padding-x: 0.3rem;
