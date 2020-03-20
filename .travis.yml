@@ -22,4 +22,4 @@ script:
   - ng build --prod --base-href https://paul58914080.github.io/ff4j-web-console/ --outputPath dist
 after_success:
   - codecov
-  - ngh --message=ngh published new page through travis
+  - ngh
