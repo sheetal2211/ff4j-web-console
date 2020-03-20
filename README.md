@@ -1,4 +1,4 @@
-# Ff4jWebConsole
+# FF4J Web Console [![Build Status](https://travis-ci.com/paul58914080/ff4j-web-console.svg?branch=master)](https://travis-ci.com/paul58914080/ff4j-web-console) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4a7653387c3342338a247ac8b03fc34d)](https://www.codacy.com/app/paul58914080/ff4j-web-console?utm_source=github.com&utm_medium=referral&utm_content=paul58914080/ff4j-web-console&utm_campaign=Badge_Grade) [![codecov](https://codecov.io/gh/paul58914080/ff4j-web-console/branch/master/graph/badge.svg)](https://codecov.io/gh/paul58914080/ff4j-web-console) [![dependencies Status](https://david-dm.org/paul58914080/ff4j-web-console/status.svg)](https://david-dm.org/paul58914080/ff4j-web-console) [![devDependencies Status](https://david-dm.org/paul58914080/ff4j-web-console/dev-status.svg)](https://david-dm.org/paul58914080/ff4j-web-console?type=dev)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.6.
 
