@@ -25,14 +25,14 @@
     "build": "ng build",
     "test": "ng test",
     "test:once": "ng test --watch=false",
-    "lint": "ng lint",
     "e2e": "ng e2e",
     "mock:server": "json-server --watch mock/data.json",
-    "lint:fix": "ng lint --fix",
+    "lint": "ng lint",
     "lint:html": "htmlhint --config lint/.htmlhintrc src/app/**/*.html",
     "lint:styles": "stylelint --config lint/.stylelintrc.json src/app/**/*.scss",
+    "lint:all": "run-p lint lint:html lint:styles",
     "format:prettier": "pretty-quick --staged",
-    "format:all": "run-s lint:styles lint:fix lint:html format:prettier"
+    "format:all": "run-s lint:all format:prettier"
   },
   "dependencies": {
     "@angular/animations": "~9.0.6",
