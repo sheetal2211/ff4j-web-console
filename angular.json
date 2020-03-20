@@ -113,6 +113,10 @@
               "devServerTarget": "ff4j-web-console:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     }
