@@ -86,6 +86,10 @@
     "tslint": "~6.1.0",
     "typescript": "~3.8.3"
   },
+  "resolutions": {
+    "karma/optimist/minimist": "~1.2.5",
+    "stylelint/postcss-sass/gonzales-pe/minimist": "~1.2.5"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "npm run format:all",
