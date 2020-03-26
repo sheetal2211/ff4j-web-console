@@ -6,7 +6,7 @@ import { environment } from './environments/environment';
 
 // Uncomment this after building the element
 // import 'elements/ff4j-features';
-//import 'elements/ff4j-properties';
+// import 'elements/ff4j-properties';
 
 if (environment.production) {
   enableProdMode();
