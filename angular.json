@@ -259,7 +259,7 @@
       "prefix": "ff4j",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
             "outputPath": "dist/ff4j-properties",
             "index": "projects/ff4j-properties/src/index.html",
@@ -274,7 +274,13 @@
             "styles": [
               "projects/ff4j-properties/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "customWebpackConfig": {
+              "path": "projects/ff4j-features/build/extra-webpack.config.js",
+              "mergeStrategies": {
+                "externals": "replace"
+              }
+            }
           },
           "configurations": {
             "production": {
