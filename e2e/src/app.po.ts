@@ -6,6 +6,6 @@ export class AppPage {
   }
 
   getTitleText(): Promise<string> {
-    return element(by.css('ff4j-root .content span')).getText() as Promise<string>;
+    return element(by.css('ff4j-root div h1')).getText() as Promise<string>;
   }
 }
