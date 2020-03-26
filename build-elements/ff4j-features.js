@@ -14,4 +14,4 @@ const concat = require('concat');
     './dist/ff4j-features/styles.css',
     'elements/ff4j-features.styles.css'
   );
-})();
+}());
