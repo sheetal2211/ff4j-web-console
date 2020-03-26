@@ -4,13 +4,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "ff4jFeatures",
+      "ff4j",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "ff4j-features",
+      "ff4j",
       "kebab-case"
     ]
   }
