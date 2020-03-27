@@ -2,8 +2,8 @@ import {Injector, NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PropertiesComponent } from './properties.component';
 import { environment } from '../environments/environment';
-import {createCustomElement} from '@angular/elements';
-import {BrowserModule} from "@angular/platform-browser";
+import { createCustomElement } from '@angular/elements';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 @NgModule({
