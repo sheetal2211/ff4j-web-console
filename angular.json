@@ -216,7 +216,9 @@
               "projects/ff4j-features/src/favicon.ico",
               "projects/ff4j-features/src/assets"
             ],
-            "styles": ["projects/ff4j-features/src/styles.scss"],
+            "styles": [
+              "projects/ff4j-features/src/styles.scss"
+            ],
             "scripts": []
           }
         },
@@ -228,7 +230,9 @@
               "projects/ff4j-features/tsconfig.spec.json",
               "projects/ff4j-features/e2e/tsconfig.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "e2e": {
@@ -240,6 +244,133 @@
           "configurations": {
             "production": {
               "devServerTarget": "ff4j-features:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "ff4j-properties": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/ff4j-properties",
+      "sourceRoot": "projects/ff4j-properties/src",
+      "prefix": "ff4j",
+      "architect": {
+        "build": {
+          "builder": "@angular-builders/custom-webpack:browser",
+          "options": {
+            "outputPath": "dist/ff4j-properties",
+            "index": "projects/ff4j-properties/src/index.html",
+            "main": "projects/ff4j-properties/src/main.ts",
+            "polyfills": "projects/ff4j-properties/src/polyfills.ts",
+            "tsConfig": "projects/ff4j-properties/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/ff4j-properties/src/favicon.ico",
+              "projects/ff4j-properties/src/assets"
+            ],
+            "styles": [
+              "projects/ff4j-properties/src/styles.scss"
+            ],
+            "scripts": [],
+            "customWebpackConfig": {
+              "path": "projects/ff4j-features/build/extra-webpack.config.js",
+              "mergeStrategies": {
+                "externals": "replace"
+              }
+            }
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/ff4j-properties/src/environments/environment.ts",
+                  "with": "projects/ff4j-properties/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ff4j-properties:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ff4j-properties:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ff4j-properties:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ff4j-properties/src/test.ts",
+            "polyfills": "projects/ff4j-properties/src/polyfills.ts",
+            "tsConfig": "projects/ff4j-properties/tsconfig.spec.json",
+            "karmaConfig": "projects/ff4j-properties/karma.conf.js",
+            "assets": [
+              "projects/ff4j-properties/src/favicon.ico",
+              "projects/ff4j-properties/src/assets"
+            ],
+            "styles": [
+              "projects/ff4j-properties/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ff4j-properties/tsconfig.app.json",
+              "projects/ff4j-properties/tsconfig.spec.json",
+              "projects/ff4j-properties/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/ff4j-properties/e2e/protractor.conf.js",
+            "devServerTarget": "ff4j-properties:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ff4j-properties:serve:production"
             }
           }
         }
