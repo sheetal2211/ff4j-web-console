@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { PropertiesComponent } from './properties.component';
 import { environment } from '../environments/environment';
 import {createCustomElement} from '@angular/elements';
+import {BrowserModule} from "@angular/platform-browser";
 
 
 @NgModule({
   declarations: [PropertiesComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    BrowserModule
   ],
   exports: [
     PropertiesComponent
