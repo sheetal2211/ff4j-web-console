@@ -12,4 +12,4 @@ const del = require("del");
   await del(["elements/ff4j-dashboard.js"]);
   await fs.ensureDir("elements");
   await concat(files, "elements/ff4j-dashboard.js");
-})();
+}());
