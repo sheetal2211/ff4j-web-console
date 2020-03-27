@@ -25,7 +25,11 @@
             "aot": true,
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles/ff4j.scss"],
-            "scripts": []
+            "scripts": [
+              {
+                "input": "node_modules/document-register-element/build/document-register-element.js"
+              }
+            ]
           },
           "configurations": {
             "production": {
@@ -253,7 +257,7 @@
       "prefix": "ff4j",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
             "outputPath": "dist/ff4j-dashboard",
             "index": "projects/ff4j-dashboard/src/index.html",
@@ -266,7 +270,13 @@
               "projects/ff4j-dashboard/src/assets"
             ],
             "styles": ["projects/ff4j-dashboard/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "customWebpackConfig": {
+              "path": "projects/ff4j-dashboard/build/extra-webpack.config.js",
+              "mergeStrategies": {
+                "externals": "replace"
+              }
+            }
           },
           "configurations": {
             "production": {

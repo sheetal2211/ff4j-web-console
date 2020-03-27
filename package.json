@@ -24,6 +24,7 @@
     "start": "run-p mock:server 'ng serve'",
     "build": "ng build",
     "build:features-element": "ng build ff4j-features --prod --output-hashing none && node build-elements/ff4j-features.js",
+    "build:dashboard-element": "ng build ff4j-dashboard --prod --output-hashing none && node build-elements/ff4j-dashboard.js",
     "test": "ng test",
     "test:once": "ng test --watch=false",
     "e2e": "ng e2e",
