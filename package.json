@@ -62,7 +62,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^13.9.4",
     "angular-cli-ghpages": "^0.6.2",
-    "codelyzer": "^5.1.2",
+    "codelyzer": "^5.2.2",
     "concat": "^1.0.3",
     "del": "^5.1.0",
     "fs-extra": "^9.0.0",
